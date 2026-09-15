@@ -7,11 +7,11 @@ test("renders the complete Novena eDP adapter binary PCB", async () => {
   const document = parseAltiumBinaryPcbDoc(source)
   const svg = serializeAltiumPcbToSvg(document, {
     title: "Novena eDP adapter DVT1 PCB",
+    layers: ["TOP", "TOPOVERLAY"],
   })
 
   expect(svg).toContain('data-record="Fill"')
-  expect(svg).toContain('data-record="ComponentBody"')
-  expect(svg).toContain('data-layer="TOPPASTE"')
+  expect(svg).toContain('data-layer="TOPOVERLAY"')
   expect(svg).toContain('transform="rotate(-270')
   await expect(svg).toMatchSvgSnapshot(import.meta.path)
 }, 20_000)

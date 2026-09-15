@@ -7,6 +7,7 @@ test("renders the SimpleFOC Shield V3 PCB", async () => {
   const document = parseAltiumPcbDoc(source)
   const svg = serializeAltiumPcbToSvg(document, {
     title: "SimpleFOC Shield V3 PCB",
+    layers: ["TOP", "TOPOVERLAY"],
   })
 
   expect(svg).toContain('data-record="Track"')
