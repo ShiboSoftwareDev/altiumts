@@ -7,6 +7,7 @@ test("renders the SimpleFOC Mini PCB", async () => {
   const document = parseAltiumPcbDoc(source)
   const svg = serializeAltiumPcbToSvg(document, {
     title: "SimpleFOC Mini PCB",
+    layers: ["TOP", "TOPOVERLAY"],
   })
 
   expect(svg).toContain('data-record="Track"')

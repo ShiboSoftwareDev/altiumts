@@ -8,6 +8,7 @@ test("renders the complete STM32 ST-Link V2.1 binary PCB", async () => {
   const document = parseAltiumBinaryPcbDoc(source)
   const svg = serializeAltiumPcbToSvg(document, {
     title: "STM32 ST-Link V2.1 PCB",
+    layers: ["TOP", "TOPOVERLAY"],
   })
 
   expect(getPcbDocumentBounds(document)).toEqual({

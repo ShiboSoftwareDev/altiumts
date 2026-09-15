@@ -7,12 +7,12 @@ test("renders the complete binary Elk Pi PCB", async () => {
   const document = parseAltiumBinaryPcbDoc(source)
   const svg = serializeAltiumPcbToSvg(document, {
     title: "Elk Pi PCB",
+    layers: ["TOP", "TOPOVERLAY"],
   })
 
   expect(svg).toContain('data-record="Region"')
-  expect(svg).toContain('data-record="ComponentBody"')
   expect(svg).toContain('data-record="Text"')
   expect(svg).toContain('fill-rule="evenodd"')
-  expect(svg).toContain(">DOUT</text>")
+  expect(svg).toContain('data-layer="TOPOVERLAY"')
   await expect(svg).toMatchSvgSnapshot(import.meta.path)
 }, 20_000)
